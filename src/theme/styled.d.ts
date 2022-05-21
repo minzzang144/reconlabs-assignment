@@ -6,6 +6,15 @@ declare module 'styled-components' {
       modal: string;
     };
     media: Record<'tablet', (l: TemplateStringsArray, ...p: BackQuoteArgs) => CSSProp<DefaultTheme>>;
+    sizes: {
+      sm: string;
+      md: string;
+      lg: string;
+    };
+    weight: {
+      normal: string;
+      bold: string;
+    };
   }
 }
 

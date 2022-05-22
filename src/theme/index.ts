@@ -1,5 +1,5 @@
 import { DefaultTheme } from 'styled-components';
-import media from './media';
+import media from './mediaStyle';
 
 const colors = {
   modal: 'rgba(0, 0, 0, 0.7)',

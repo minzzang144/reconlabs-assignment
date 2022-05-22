@@ -7,8 +7,11 @@ import { Image } from './components/Image';
 
 function App() {
   useEffect(() => {
+    const glbs = ['/Chair.glb', '/cube.glb', '/Mixer.glb', 'ToyCar.glb'];
+    const random = Math.floor(Math.random() * glbs.length);
+
     new View3D('#wrapper-el', {
-      src: '/Chair.glb',
+      src: glbs[random],
       plugins: [new LoadingBar()],
     });
   }, []);

@@ -1,8 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { ColorType } from '../theme';
-
-type BgcolorType = Pick<ImageProps, 'bgColor'>;
+import { colorStyles } from '../theme/colorStyles';
 
 export interface ImageProps {
   width?: string;
@@ -20,14 +19,6 @@ export const Image: React.FC<ImageProps> = ({ children, onClick, ...rest }) => {
   );
 };
 
-const bgStyles = css<BgcolorType>`
-  ${({ bgColor }) =>
-    bgColor === 'modal' &&
-    css`
-      background-color: ${({ theme }) => theme.colors.modal};
-    `}
-`;
-
 const Wrapper = styled.image`
-  ${bgStyles}
+  ${colorStyles}
 `;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import View3D, { LoadingBar } from '@egjs/view3d';
@@ -6,6 +6,12 @@ import '@egjs/view3d/css/view3d-bundle.min.css';
 import { Image } from './components/Image';
 
 function App() {
+  const [clicking, useClicking] = useState<boolean>(false);
+
+  function booleanController(stating: React.Dispatch<React.SetStateAction<boolean>>) {
+    stating((current) => !current);
+  }
+
   useEffect(() => {
     const glbs = ['/Chair.glb', '/cube.glb', '/Mixer.glb', 'ToyCar.glb'];
     const random = Math.floor(Math.random() * glbs.length);
@@ -17,34 +23,60 @@ function App() {
   }, []);
 
   return (
-    <FlexColumn>
-      <FlexCenter>
-        <Logo src="/logo.png" alt="Logo" width="100rem" />
-      </FlexCenter>
-      <Background>
-        <ThreeDimentionContainer>
-          <>
-            <AiOutlineExclamationCircle style={{ alignSelf: 'end', cursor: 'pointer' }} />
-            <Viewer id="wrapper-el">
-              <canvas className="view3d-canvas"></canvas>
-            </Viewer>
-          </>
-        </ThreeDimentionContainer>
-      </Background>
-    </FlexColumn>
+    <>
+      <FlexColumn>
+        <FlexHorizonCenter>
+          <Logo src="/logo.png" alt="Logo" width="100rem" />
+        </FlexHorizonCenter>
+        <Background>
+          <ThreeDimentionContainer>
+            <>
+              <AiOutlineExclamationCircle
+                style={{ alignSelf: 'end', cursor: 'pointer', marginBottom: '.5rem' }}
+                onClick={() => booleanController(useClicking)}
+              />
+              <Viewer id="wrapper-el">
+                <canvas className="view3d-canvas"></canvas>
+              </Viewer>
+            </>
+          </ThreeDimentionContainer>
+        </Background>
+      </FlexColumn>
+      {clicking ? (
+        <Modal onClick={() => booleanController(useClicking)}>
+          <Image src="/modal.png" alt="Modal" />
+        </Modal>
+      ) : null}
+    </>
   );
 }
 
 export default App;
 
-const FlexCenter = styled.div`
+const Flex = styled.div`
   display: flex;
+`;
+
+const FlexHorizonCenter = styled(Flex)`
   justify-content: center;
+`;
+
+const FlexCenter = styled(FlexHorizonCenter)`
+  align-items: center;
 `;
 
 const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const Modal = styled(FlexCenter)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.colors.modal};
 `;
 
 const Logo = styled(Image)`
@@ -56,7 +88,7 @@ const Background = styled(FlexCenter)`
   background-size: cover;
   background-position: center;
   width: 100vw;
-  height: 70vh;
+  height: 80vh;
   align-items: center;
 `;
 

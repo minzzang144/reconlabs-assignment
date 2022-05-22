@@ -4,6 +4,8 @@ import { ColorType } from '../theme';
 import { colorStyles } from '../theme/colorStyles';
 
 export interface ImageProps {
+  src: string;
+  alt: string;
   width?: string;
   height?: string;
   bgColor?: ColorType;
@@ -19,6 +21,6 @@ export const Image: React.FC<ImageProps> = ({ children, onClick, ...rest }) => {
   );
 };
 
-const Wrapper = styled.image`
+const Wrapper = styled.img`
   ${colorStyles}
 `;

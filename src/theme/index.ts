@@ -2,7 +2,9 @@ import { DefaultTheme } from 'styled-components';
 import media from './mediaStyle';
 
 const colors = {
+  blue: '#0071FF',
   modal: 'rgba(0, 0, 0, 0.7)',
+  white: '#FFFFFF',
 };
 
 const sizes = {

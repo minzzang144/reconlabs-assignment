@@ -2,10 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { ColorType } from '../theme';
 import { colorStyles } from '../theme/colorStyles';
+import { borderStyles, marginStyles, paddingStyles } from '../theme/boxModelStyle';
+import { LengthStyles } from '../theme/lengthStyle';
 
-export interface ButtonProps {
+interface ButtonProps {
   width?: string;
   height?: string;
+  padding?: string[];
+  margin?: string[];
+  borderRadius?: string;
+  color?: ColorType;
   bgColor?: ColorType;
   onClick?: () => void;
   children?: React.ReactNode;
@@ -24,6 +30,11 @@ const Wrapper = styled.button`
   justify-content: center;
   align-items: center;
   outline: none;
+  border: 0;
   cursor: pointer;
   ${colorStyles}
+  ${LengthStyles}
+  ${marginStyles}
+  ${paddingStyles}
+  ${borderStyles}
 `;

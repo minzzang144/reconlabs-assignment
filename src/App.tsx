@@ -4,6 +4,7 @@ import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import View3D, { LoadingBar } from '@egjs/view3d';
 import '@egjs/view3d/css/view3d-bundle.min.css';
 import { Image } from './components/Image';
+import { Button } from './components/Button';
 
 function App() {
   const [clicking, useClicking] = useState<boolean>(false);
@@ -38,6 +39,16 @@ function App() {
               <Viewer id="wrapper-el">
                 <canvas className="view3d-canvas"></canvas>
               </Viewer>
+              <Button
+                bgColor="blue"
+                color="white"
+                margin={['1rem', '0', '0', '0']}
+                padding={['.2rem']}
+                borderRadius="3px"
+                width="7rem"
+              >
+                코드 복사하기
+              </Button>
             </>
           </ThreeDimentionContainer>
         </Background>
@@ -95,6 +106,7 @@ const Background = styled(FlexCenter)`
 const ThreeDimentionContainer = styled(FlexColumn)`
   width: 50%;
   height: 70%;
+  align-items: center;
 `;
 
 const Viewer = styled.div`

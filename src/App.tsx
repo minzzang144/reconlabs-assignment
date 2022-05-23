@@ -25,6 +25,19 @@ function App() {
     }
   }
 
+  function downloadQrcode() {
+    const svg = document.querySelector('#qrcode')!;
+    const svgXML = new XMLSerializer().serializeToString(svg);
+    const dataUrl = 'data:image/svg,' + encodeURIComponent(svgXML);
+
+    const anchor = document.createElement('a');
+    anchor.href = dataUrl;
+    anchor.download = `qr-code.svg`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+  }
+
   useEffect(() => {
     const glbs = ['/Chair.glb', '/cube.glb', '/Mixer.glb', 'ToyCar.glb'];
     const random = Math.floor(Math.random() * glbs.length);
@@ -70,7 +83,7 @@ function App() {
         <Span fontSize="lg" fontWeight="bold" margin={['1.2rem', '0', '0.8rem', '0']}>
           스마트폰을 통해 스캔 해주세요.
         </Span>
-        <QRCodeSVG value="https://plicar.io/" />
+        <QRCodeSVG value="https://plicar.io/" id="qrcode" />
         <Span fontSize="md" fontWeight="normal" margin={['1rem', '0', '.3rem', '0']}>
           스마트폰 기본 카메라 앱에서
         </Span>
@@ -78,7 +91,7 @@ function App() {
           아래의 QR을 비춘 후 뜨는 링크를 눌러주세요
         </Span>
         <Button
-          // onClick={codeBtnClick}
+          onClick={downloadQrcode}
           bgColor="blue"
           color="white"
           margin={['1rem', '0']}

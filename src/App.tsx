@@ -173,12 +173,17 @@ const ThreeDimentionContainer = styled(FlexColumn)`
   width: 50%;
   height: 70%;
   align-items: center;
+  ${({ theme }) => theme.media.tablet`
+    width: 90%;
+  `}
 `;
 
 const Viewer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 5px;
 `;
 
 const QrcodeContainer = styled(FlexColumnCenter)`

@@ -19,7 +19,7 @@ type BackQuoteArgs = string[];
 const media = {
   tablet: (literals: TemplateStringsArray, ...args: BackQuoteArgs): CSSProp =>
     css`
-      @media only screen and (max-width: ${sizes.tablet.width}px) and (max-height: ${sizes.tablet.height}) {
+      @media only screen and (max-width: ${sizes.tablet.width}px) {
         ${css(literals, ...args)}
       }
     `,

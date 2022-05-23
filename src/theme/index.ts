@@ -9,8 +9,8 @@ const colors = {
 
 const sizes = {
   sm: '0.5rem',
-  md: '0.7rem',
-  lg: '1rem',
+  md: '0.8rem',
+  lg: '1.2rem',
 };
 
 const weight = {

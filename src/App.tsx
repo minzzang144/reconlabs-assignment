@@ -98,6 +98,11 @@ function App() {
           Android: 8.0+ 이상 ARCore 1.9 지원기기
         </Span>
       </QrcodeContainer>
+      <FlexHorizonCenter>
+        <Span fontSize="md" fontWeight="normal" margin={['.8rem', '0', '3rem', '0']}>
+          Copyright 2022. RECON Labs Inc. All rights reserved.
+        </Span>
+      </FlexHorizonCenter>
       {clicking ? (
         <Modal onClick={() => booleanController(useClicking)}>
           <Image src="/modal.png" alt="Modal" />

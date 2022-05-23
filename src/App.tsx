@@ -13,6 +13,16 @@ function App() {
     stating((current) => !current);
   }
 
+  async function codeBtnClick() {
+    const url = window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      alert('클립보드에 복사되었습니다.');
+    } catch (error) {
+      alert('복사 실패 😥');
+    }
+  }
+
   useEffect(() => {
     const glbs = ['/Chair.glb', '/cube.glb', '/Mixer.glb', 'ToyCar.glb'];
     const random = Math.floor(Math.random() * glbs.length);
@@ -40,6 +50,7 @@ function App() {
                 <canvas className="view3d-canvas"></canvas>
               </Viewer>
               <Button
+                onClick={codeBtnClick}
                 bgColor="blue"
                 color="white"
                 margin={['1rem', '0', '0', '0']}
